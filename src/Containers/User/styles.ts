@@ -53,6 +53,10 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
+    paddingVertical: 2,
+  },
+  blue: {
+    color: '#286CE2',
   },
 });
 

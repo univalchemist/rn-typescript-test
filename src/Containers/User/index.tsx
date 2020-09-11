@@ -49,18 +49,20 @@ const User = (props: UserProps) => {
               <Text style={styles.title}>Contract Information</Text>
             </View>
             <View style={styles.contactWrap}>
-              <Text style={styles.text} onPress={() => openEmail(user?.email)}>
+              <Text
+                style={[styles.text, styles.blue]}
+                onPress={() => openEmail(user?.email)}>
                 {user?.email}
               </Text>
               <Text style={styles.text}>{user?.address?.street}</Text>
               <Text style={styles.text}>{user?.address?.suite}</Text>
               <Text
-                style={styles.text}
+                style={[styles.text, styles.blue]}
                 onPress={() =>
                   openMap(user?.address?.geo?.lat, user?.address?.geo?.lng)
                 }>{`${user?.address.city} ${user?.address?.zipcode}`}</Text>
               <Text
-                style={styles.text}
+                style={[styles.text, styles.blue]}
                 onPress={() => openPhoneNumber(user?.phone)}>
                 {user?.phone}
               </Text>
@@ -71,7 +73,7 @@ const User = (props: UserProps) => {
             <View style={styles.contactWrap}>
               <Text style={styles.text}>{user?.username}</Text>
               <Text
-                style={styles.text}
+                style={[styles.text, styles.blue]}
                 onPress={() => openUrl(`http://${user?.website}`)}>
                 {user?.website}
               </Text>
