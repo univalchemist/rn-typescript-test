@@ -6,6 +6,7 @@ import UserSelector from '../../Store/User/Selector';
 import Loading from '../../Components/Loading';
 
 import styles from './styles';
+import {openEmail, openMap, openUrl, openPhoneNumber} from '../../Shared/Utils';
 
 interface UserProps {
   route: {
@@ -48,21 +49,32 @@ const User = (props: UserProps) => {
               <Text style={styles.title}>Contract Information</Text>
             </View>
             <View style={styles.contactWrap}>
-              <Text style={styles.text}>{user?.email}</Text>
+              <Text style={styles.text} onPress={() => openEmail(user?.email)}>
+                {user?.email}
+              </Text>
               <Text style={styles.text}>{user?.address?.street}</Text>
               <Text style={styles.text}>{user?.address?.suite}</Text>
               <Text
-                style={
-                  styles.text
+                style={styles.text}
+                onPress={() =>
+                  openMap(user?.address?.geo?.lat, user?.address?.geo?.lng)
                 }>{`${user?.address.city} ${user?.address?.zipcode}`}</Text>
-              <Text style={styles.text}>{user?.phone}</Text>
+              <Text
+                style={styles.text}
+                onPress={() => openPhoneNumber(user?.phone)}>
+                {user?.phone}
+              </Text>
             </View>
             <View style={styles.titleWrap}>
               <Text style={styles.title}>Other Information</Text>
             </View>
             <View style={styles.contactWrap}>
               <Text style={styles.text}>{user?.username}</Text>
-              <Text style={styles.text}>{user?.website}</Text>
+              <Text
+                style={styles.text}
+                onPress={() => openUrl(`http://${user?.website}`)}>
+                {user?.website}
+              </Text>
             </View>
           </View>
         </ScrollView>
